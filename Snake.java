@@ -13,11 +13,14 @@ public class Snake {
 
     public Food food = new Food(new Point(1, 3), Color.GREEN);
 
+    private boolean nowalls;
+
     Random random = new Random();
 
     /* constructor */
-    public Snake(Head head) {
+    public Snake(Head head, boolean nowalls) {
         this.head = head;
+        this.nowalls = nowalls;
     }
 
     /* functions */
@@ -80,8 +83,20 @@ public class Snake {
             checkifyouaredeadotherwisewewillgetyoudead = checkifyouaredeadotherwisewewillgetyoudead.getNext();
         }
 
-        if (head.getLoc().x < 0 || head.getLoc().x > 19 || head.getLoc().y < 0 || head.getLoc().y > 19) {
-            System.exit(0);
+        if (nowalls) {
+            if (headX < 0) {
+                head.setLoc(new Point(headX+20, headY));
+            } else if (headX > 19) {
+                head.setLoc(new Point(headX-20, headY));
+            } else if (headY < 0) {
+                head.setLoc(new Point(headX, headY+20));
+            } else if (headY > 19) {
+                head.setLoc(new Point(headX, headY-20));
+            }
+        } else {
+            if (head.getLoc().x < 0 || head.getLoc().x > 19 || head.getLoc().y < 0 || head.getLoc().y > 19) {
+                System.exit(0);
+            }
         }
 
         if (isCollision(food)) {
