@@ -18,6 +18,16 @@ javac -d ./build *.java
 
 This will put all of the compiled classes in a folder called `build`. We should've placed all of the files in a `src` folder too, but laziness took over sadly.
 
+## I want to play another mode
+
+You can play without walls if you pass the argument `no-walls` while opening the application. For example:
+
+```bash
+java Main --no-walls
+```
+
+This gamemode will allow you to pass through the boundaries of the game without dying. We are currently working on Battle Royale.
+
 ## This sucks! Why?
 
 Because this is meant to be easily extendable. If you feel like there is something extremely basic that needs to be in this program, you are free to create a Pull Request. We strongly advise you to create an issue beforehand, to avoid doing work that we will not use.
