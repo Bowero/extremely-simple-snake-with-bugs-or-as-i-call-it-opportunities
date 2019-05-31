@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -52,6 +54,7 @@ public class Game extends JPanel implements KeyListener {
         /* draw the tail */
         g.setColor(last.getColor());
         g.fillRect(last.getLoc().x * scale, last.getLoc().y * scale, scale, scale);
+
 
         /* draw food */
         g.setColor(snake.food.getColor());
