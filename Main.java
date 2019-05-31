@@ -13,12 +13,22 @@ public class Main {
     static Timer timer = new Timer();
     static TimerTask task;
 
+    public static boolean nowalls;
+
     public static void main(String[] args) {
+
+        nowalls = false;
+
+        if (args.length >= 0) {
+            if (args[0].equals("--no-walls")) {
+                nowalls = true;
+            }
+        }
 
         /* unit test */
         Head head = new Head(new Point(6, 4), Color.BLACK);
 
-        Snake snake = new Snake(head);
+        Snake snake = new Snake(head, nowalls);
         Body body = new Body(new Point(5, 4), Color.BLUE);
 
         snake.append(body);
