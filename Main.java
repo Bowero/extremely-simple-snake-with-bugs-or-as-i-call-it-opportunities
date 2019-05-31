@@ -19,7 +19,7 @@ public class Main {
 
         nowalls = false;
 
-        if (args.length >= 0) {
+        if (args.length > 0) {
             if (args[0].equals("--no-walls")) {
                 nowalls = true;
             }
