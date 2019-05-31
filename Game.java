@@ -36,6 +36,7 @@ public class Game extends JPanel implements KeyListener {
     @Override
     public void paintComponent(Graphics g) {
 
+        /* draws a white square over the screen to clear it */
         g.clearRect(0, 0, 20 * scale, 20 * scale);
 
         /* store last block */
@@ -56,6 +57,7 @@ public class Game extends JPanel implements KeyListener {
         g.setColor(snake.food.getColor());
         g.fillRect(snake.food.getLoc().x * scale, snake.food.getLoc().y * scale, scale, scale);
 
+        /* draw the score */
         g.setColor(Color.BLACK);
         Font font = new Font("Helvetica", 0, 20);
         g.setFont(font);
