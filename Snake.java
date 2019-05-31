@@ -99,6 +99,7 @@ public class Snake {
             }
         }
 
+        /* checks if the snake collides with the food */
         if (head.isCollision(food)) {
             append(new Body(lp, Color.BLUE));
             food.setLoc(new Point(random.nextInt(19 - 0 + 1), random.nextInt(19 - 0 + 1)));
