@@ -1,6 +1,6 @@
 # extremely-simple-snake-with-bugs-or-as-i-call-it-opportunities
 
-## Explaination
+## Explanation
 
 This repository is meant to contain our Snake Game. We had to create a Snake Game in Java with the following requirements:
 
