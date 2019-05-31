@@ -1,5 +1,9 @@
 # extremely-simple-snake-with-bugs-or-as-i-call-it-opportunities
 
+<p align="center">
+  <img src="https://i.imgur.com/qPMbgz7.png" alt="The gay snake" height="300px" />
+</p>
+
 ## Explanation
 
 This repository is meant to contain our Snake Game. We had to create a Snake Game in Java with the following requirements:
