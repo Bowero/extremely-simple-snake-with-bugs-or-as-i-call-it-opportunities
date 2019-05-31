@@ -21,7 +21,6 @@ public class Main {
 
         nowalls = false;
         pride = false;
-        help = false;
 
         for(int i = 0; i < args.length; i++) {
             System.out.println(i);
@@ -36,37 +35,35 @@ public class Main {
                     System.out.println("The following parameters are available:");
                     System.out.println("\"--no-walls\" this disables all walls");
                     System.out.println("\"--pride\" this turns the snake into a rainbow snake");
-                    help = true;
+                    System.exit(0);
                 }
             }
         }
+        /* unit test */
+        Head head = new Head(new Point(6, 4), Color.BLACK);
 
-        if(!help) {
-            /* unit test */
-            Head head = new Head(new Point(6, 4), Color.BLACK);
+        Snake snake = new Snake(head, nowalls, pride);
+        Body body = new Body(new Point(5, 4), Color.BLUE);
 
-            Snake snake = new Snake(head, nowalls, pride);
-            Body body = new Body(new Point(5, 4), Color.BLUE);
+        snake.append(body);
 
-            snake.append(body);
+        /* screen */
+        JFrame frame = new JFrame();
+        Game game = new Game(snake);
+        frame.add(game);
+        frame.addKeyListener(game);
+        frame.pack();
+        frame.setVisible(true);
 
-            /* screen */
-            JFrame frame = new JFrame();
-            Game game = new Game(snake);
-            frame.add(game);
-            frame.addKeyListener(game);
-            frame.pack();
-            frame.setVisible(true);
+        task = new TimerTask() {
 
-            task = new TimerTask() {
+            @Override
+            public void run() {
+                snake.move();
+                game.repaint();
+            }
+        };
+        timer.schedule(task, 100, 100);
 
-                @Override
-                public void run() {
-                    snake.move();
-                    game.repaint();
-                }
-            };
-            timer.schedule(task, 100, 100);
-        }
     }
 }
