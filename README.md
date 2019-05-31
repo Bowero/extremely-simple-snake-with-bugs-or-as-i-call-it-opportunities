@@ -16,7 +16,7 @@ The easiest way to compile the java files, is to run the following command from 
 javac -d ./build *.java
 ```
 
-This will put all of the compiled classes in a folder called `build`. We should've placed all of the files in a `src` folder too, but laziness took over sadly.
+This will put all of the compiled classes in a folder called `build`. 
 
 ## I want to play another mode
 
@@ -27,6 +27,7 @@ java Main --no-walls
 ```
 
 This gamemode will allow you to pass through the boundaries of the game without dying. We are currently working on Battle Royale.
+To see all the other flags pass the argument `help` while opening the application
 
 ## This sucks! Why?
 
