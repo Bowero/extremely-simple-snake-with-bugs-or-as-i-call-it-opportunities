@@ -13,7 +13,7 @@ This repository is meant to contain our Snake Game. We had to create a Snake Gam
 The easiest way to compile the java files, is to run the following command from the root directory:
 
 ```bash
-javac -d ./build *.java
+javac src/*.java -d build
 ```
 
 This will put all of the compiled classes in a folder called `build`. 
@@ -27,7 +27,7 @@ java Main --no-walls
 ```
 
 This gamemode will allow you to pass through the boundaries of the game without dying. We are currently working on Battle Royale.
-To see all the other flags pass the argument `help` while opening the application
+To see all the other flags pass the argument `--help` while opening the application. You can for example also play as a gay snake.
 
 ## This sucks! Why?
 
