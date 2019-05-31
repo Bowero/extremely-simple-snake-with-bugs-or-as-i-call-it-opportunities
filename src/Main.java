@@ -23,7 +23,6 @@ public class Main {
         pride = false;
 
         for(int i = 0; i < args.length; i++) {
-            System.out.println(i);
             if (args.length > 0) {
                 if (args[i].equals("--no-walls")) {
                     nowalls = true;
