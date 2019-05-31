@@ -59,4 +59,12 @@ public class Body extends Block {
         return color;
     }
 
+    /* check if o collides */
+    public boolean isCollision(Block o) {
+
+        /* following is true when o and head collide */
+        return (getLoc().x == o.getLoc().x && getLoc().y == o.getLoc().y);
+
+    }
+
 }

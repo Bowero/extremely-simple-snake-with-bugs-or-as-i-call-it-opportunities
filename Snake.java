@@ -75,7 +75,7 @@ public class Snake {
 
         Body checkifyouaredeadotherwisewewillgetyoudead = head.getNext();
         while (checkifyouaredeadotherwisewewillgetyoudead.getNext() != null) {
-            if (isCollision(checkifyouaredeadotherwisewewillgetyoudead))
+            if (head.isCollision(checkifyouaredeadotherwisewewillgetyoudead))
                 System.exit(0);
             checkifyouaredeadotherwisewewillgetyoudead = checkifyouaredeadotherwisewewillgetyoudead.getNext();
         }
@@ -84,9 +84,20 @@ public class Snake {
             System.exit(0);
         }
 
-        if (isCollision(food)) {
+        if (head.isCollision(food)) {
             append(new Body(lp, Color.BLUE));
             food.setLoc(new Point(random.nextInt(19 - 0 + 1), random.nextInt(19 - 0 + 1)));
+
+
+            /* Makes sure the food does not spawn on top of the snake*/
+            while(last.getNext() != null){
+                if(last.getLoc().x == food.getLoc().x && last.getLoc().y == food.getLoc().y){
+                    food.setLoc(new Point(random.nextInt(19 - 0 + 1), random.nextInt(19 - 0 + 1)));
+                }
+
+
+                last = last.getNext();
+            }
         }
     }
 
@@ -111,13 +122,6 @@ public class Snake {
         }
     }
 
-    /* check if o collides with head */
-    public boolean isCollision(Block o) {
-
-        /* following is true when o and head collide */
-        return (head.getLoc().x == o.getLoc().x && head.getLoc().y == o.getLoc().y);
-
-    }
 
     /* find the last block of the snake */
     public Body findLastBlock() {
