@@ -10,17 +10,23 @@ public class Snake {
     /* fields */
     private Head head;
     private Directions dir = Directions.EAST;
+    Color  bodyColor = new Color(0,255,0,255);
 
     public Food food = new Food(new Point(1, 3), Color.GREEN);
 
     private boolean nowalls;
+    private boolean pride;
+    private int red = 0;
+    private int green = 0;
+    private int blue = 255;
 
     Random random = new Random();
 
     /* constructor */
-    public Snake(Head head, boolean nowalls) {
+    public Snake(Head head, boolean nowalls, boolean pride) {
         this.head = head;
         this.nowalls = nowalls;
+        this.pride = pride;
     }
 
     /* functions */
@@ -99,9 +105,17 @@ public class Snake {
             }
         }
 
+
         /* checks if the snake collides with the food */
         if (head.isCollision(food)) {
-            append(new Body(lp, Color.BLUE));
+            if(pride) {
+                red = random.nextInt(255 - 0 + 1);
+                green = random.nextInt(255 - 0 + 1);
+                blue = random.nextInt(255 - 0 + 1);
+            }
+
+            bodyColor = new Color(red,green, blue,255);
+            append(new Body(lp, bodyColor));
             food.setLoc(new Point(random.nextInt(19 - 0 + 1), random.nextInt(19 - 0 + 1)));
 
 

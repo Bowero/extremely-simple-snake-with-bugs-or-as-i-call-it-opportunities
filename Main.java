@@ -14,21 +14,26 @@ public class Main {
     static TimerTask task;
 
     public static boolean nowalls;
+    public static boolean pride;
 
     public static void main(String[] args) {
 
         nowalls = false;
+        pride = false;
 
         if (args.length > 0) {
             if (args[0].equals("--no-walls")) {
                 nowalls = true;
+            }
+            if(args[0]. equals("--pride")){
+                pride = true;
             }
         }
 
         /* unit test */
         Head head = new Head(new Point(6, 4), Color.BLACK);
 
-        Snake snake = new Snake(head, nowalls);
+        Snake snake = new Snake(head, nowalls, pride);
         Body body = new Body(new Point(5, 4), Color.BLUE);
 
         snake.append(body);
