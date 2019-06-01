@@ -1,0 +1,19 @@
+<project name="snake" basedir=".">
+    <description>
+        ANT build file to test with Travis CI
+    </description>
+    
+    <target name="clean" description="Removes the existing build before building new ones">
+        <delete dir="build" />
+    </target>
+    
+    <target name="init" description="Makes the required folders" depends="clean">
+        <mkdir dir="build" />
+    </target>
+    
+    <target name="test" description="Testing with Travis CI" depends="init">
+        <javac srcdir="src" destdir="build">
+            <include name="*.java" />
+        </javac>
+    </target>
+</project>
