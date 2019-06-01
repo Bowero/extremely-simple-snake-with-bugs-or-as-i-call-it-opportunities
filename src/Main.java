@@ -22,6 +22,7 @@ public class Main {
 
         nowalls = false;
         pride = false;
+        int scale = 20;
 
         for(int i = 0; i < args.length; i++) {
             if (args.length > 0) {
@@ -31,10 +32,21 @@ public class Main {
                 if (args[i].equals("--pride")) {
                     pride = true;
                 }
+                if (args[i].equals("--scale")) {
+                    scale = Integer.parseInt(args[i + 1]);
+                }
                 if(args[i].equals("--help")){
-                    System.out.println("The following parameters are available:");
-                    System.out.println("\"--no-walls\" this disables all walls");
-                    System.out.println("\"--pride\" this turns the snake into a rainbow snake");
+
+                    System.out.println("\n" +
+"The following parameters are available:\n" +
+"\n" +
+"--no-walls             this disables all walls\n" +
+"--pride                this turns the snake into a rainbow snake\n" + 
+"--scale NUM            this allows you to scale the game\n" +
+"                       default: 20\n" +
+"\n" +
+                    "");
+
                     System.exit(0);
                 }
             }
@@ -49,7 +61,7 @@ public class Main {
 
         /* screen */
         JFrame frame = new JFrame();
-        Game game = new Game(snake);
+        Game game = new Game(snake, scale);
         frame.add(game);
         frame.addKeyListener(game);
         frame.pack();
