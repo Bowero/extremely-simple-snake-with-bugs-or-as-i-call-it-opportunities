@@ -22,6 +22,10 @@ public class Snake {
     private int green = 0;
     private int blue = 255;
 
+    private String eatSound = "extremely-simple-snake-with-bugs-or-as-i-call-it-opportunities/ploink.wav";
+    private String gameOver = "extremely-simple-snake-with-bugs-or-as-i-call-it-opportunities/gameover.wav";
+
+    PlaySound playSound = new PlaySound();
     Random random = new Random();
 
     /* constructor */
@@ -89,8 +93,10 @@ public class Snake {
 
         Body checkifyouaredeadotherwisewewillgetyoudead = head.getNext();
         while (checkifyouaredeadotherwisewewillgetyoudead.getNext() != null) {
-            if (head.isCollision(checkifyouaredeadotherwisewewillgetyoudead))
+            if (head.isCollision(checkifyouaredeadotherwisewewillgetyoudead)) {
+                playSound.playSound(gameOver);
                 System.exit(0);
+            }
             checkifyouaredeadotherwisewewillgetyoudead = checkifyouaredeadotherwisewewillgetyoudead.getNext();
         }
 
@@ -106,6 +112,7 @@ public class Snake {
             }
         } else {
             if (head.getLoc().x < 0 || head.getLoc().x > mapsize - 1 || head.getLoc().y < 0 || head.getLoc().y > mapsize - 1) {
+                playSound.playSound(gameOver);
                 System.exit(0);
             }
         }
@@ -113,6 +120,8 @@ public class Snake {
 
         /* checks if the snake collides with the food */
         if (head.isCollision(food)) {
+
+            new PlaySound().playSound(eatSound);
 
             if(pride) {
                 append(new Body(lp, food.getColor()));
