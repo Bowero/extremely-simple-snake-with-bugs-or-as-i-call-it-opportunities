@@ -11,7 +11,6 @@ public class Snake {
     /* fields */
     private Head head;
     private Directions dir = Directions.EAST;
-    Color  bodyColor = new Color(0,255,0,255);
 
     public Food food = new Food(new Point(1, 3), Color.GREEN);
 
@@ -109,12 +108,15 @@ public class Snake {
 
         /* checks if the snake collides with the food */
         if (head.isCollision(food)) {
-            append(new Body(lp, food.getColor()));
+
             if(pride) {
+                append(new Body(lp, food.getColor()));
                 red = random.nextInt(255 - 0 + 1);
                 green = random.nextInt(255 - 0 + 1);
                 blue = random.nextInt(255 - 0 + 1);
                 food.setColor(new Color(red, green,blue, 255));
+            } else {
+                append(new Body(lp, Color.BLUE));
             }
             food.setLoc(new Point(random.nextInt(19 - 0 + 1), random.nextInt(19 - 0 + 1)));
 
