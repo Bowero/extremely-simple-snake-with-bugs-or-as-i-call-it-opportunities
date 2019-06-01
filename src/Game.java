@@ -33,6 +33,7 @@ public class Game extends JPanel implements KeyListener {
 
         addKeyListener(this);
         setPreferredSize(new Dimension(20 * scale, 20 * scale));
+        setFocusable(true);
     }
 
     @Override
