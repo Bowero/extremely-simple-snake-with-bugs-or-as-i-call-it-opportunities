@@ -1,9 +1,6 @@
 package src;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JPanel;
@@ -18,18 +15,21 @@ public class Game extends JPanel implements KeyListener {
 
     /* fields */
     public final static int DEFAULT_SCALE = 20;
+    public final static boolean DEFAULT_PICASSO = false;
 
     private int scale;
     private Snake snake;
+    private boolean picasso;
 
     /* constructor */
     public Game(Snake snake) {
-        this(snake, Game.DEFAULT_SCALE);
+        this(snake, Game.DEFAULT_SCALE, Game.DEFAULT_PICASSO);
     }
 
-    public Game(Snake snake, int scale) {
+    public Game(Snake snake, int scale, boolean picasso) {
         this.scale = scale;
         this.snake = snake;
+        this.picasso = picasso;
 
         addKeyListener(this);
         setPreferredSize(new Dimension(20 * scale, 20 * scale));
@@ -40,7 +40,11 @@ public class Game extends JPanel implements KeyListener {
     public void paintComponent(Graphics g) {
 
         /* draws a white square over the screen to clear it */
-        g.clearRect(0, 0, 20 * scale, 20 * scale);
+        if(!picasso) {
+            g.clearRect(0, 0, 20 * scale, 20 * scale);
+        }
+
+        g.clearRect(0, 0, 20 * scale, 1 * scale);
 
         /* store last block */
         Body last = snake.getHead();

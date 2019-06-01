@@ -16,12 +16,13 @@ public class Main {
 
     public static boolean nowalls;
     public static boolean pride;
-    public static boolean help;
+    public static boolean picasso;
 
     public static void main(String[] args) {
 
         nowalls = false;
         pride = false;
+        picasso = false;
         int scale = 20;
 
         for(int i = 0; i < args.length; i++) {
@@ -34,6 +35,10 @@ public class Main {
                 }
                 if (args[i].equals("--scale")) {
                     scale = Integer.parseInt(args[i + 1]);
+                }
+                if(args[i].equals("--picasso")){
+                    picasso = true;
+                    pride = true;
                 }
                 if(args[i].equals("--help")){
 
@@ -61,7 +66,7 @@ public class Main {
 
         /* screen */
         JFrame frame = new JFrame();
-        Game game = new Game(snake, scale);
+        Game game = new Game(snake, scale, picasso);
         frame.add(game);
         frame.addKeyListener(game);
         frame.pack();
