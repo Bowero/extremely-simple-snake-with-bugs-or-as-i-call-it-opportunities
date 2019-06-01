@@ -26,7 +26,7 @@ public class Game extends JPanel implements KeyListener {
         this.snake = snake;
         this.picasso = picasso;
         this.mapsize = mapsize;
-        this.retro = retro
+        this.retro = retro;
 
         addKeyListener(this);
         setPreferredSize(new Dimension(mapsize * scale, mapsize * scale));
