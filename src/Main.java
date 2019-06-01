@@ -43,14 +43,15 @@ public class Main {
                 if(args[i].equals("--help")){
 
                     System.out.println("\n" +
-"The following parameters are available:\n" +
-"\n" +
-"--no-walls             this disables all walls\n" +
-"--pride                this turns the snake into a rainbow snake\n" + 
-"--scale NUM            this allows you to scale the game\n" +
-"                       default: 20\n" +
-"\n" +
-                    "");
+                            "The following parameters are available:\n" +
+                            "\n" +
+                            "--no-walls             this disables all walls\n" +
+                            "--pride                this turns the snake into a rainbow snake\n" +
+                            "--picasso              this turns the snake into a Snakasso\n" +
+                            "--scale NUM            this allows you to scale the game\n" +
+                            "                       default: 20\n" +
+                            "\n" +
+                            "");
 
                     System.exit(0);
                 }
