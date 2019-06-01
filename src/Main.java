@@ -13,6 +13,8 @@ public class Main {
 
     static Timer timer = new Timer();
     static TimerTask task;
+    static Timer timer2 = new Timer();
+    static TimerTask task2;
 
     public static boolean nowalls;
     public static boolean pride;
@@ -80,10 +82,18 @@ public class Main {
             @Override
             public void run() {
                 snake.move();
-                game.repaint();
             }
         };
         timer.schedule(task, 100, 100);
+
+        task2 = new TimerTask() {
+
+            @Override
+            public void run() {
+                game.repaint();
+            }
+        };
+        timer2.schedule(task2, 1, 1);
 
     }
 }
