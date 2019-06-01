@@ -43,7 +43,7 @@ public class Game extends JPanel implements KeyListener {
 
             if(retro){
                 g.setColor(new Color(0,170,0));
-                g.fillRect(0,0,20 * scale, 20 * scale);
+                g.fillRect(0,0,mapsize * scale, mapsize * scale);
             }
         }
 
