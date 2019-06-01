@@ -109,14 +109,13 @@ public class Snake {
 
         /* checks if the snake collides with the food */
         if (head.isCollision(food)) {
+            append(new Body(lp, food.getColor()));
             if(pride) {
                 red = random.nextInt(255 - 0 + 1);
                 green = random.nextInt(255 - 0 + 1);
                 blue = random.nextInt(255 - 0 + 1);
+                food.setColor(new Color(red, green,blue, 255));
             }
-
-            bodyColor = new Color(red,green, blue,255);
-            append(new Body(lp, bodyColor));
             food.setLoc(new Point(random.nextInt(19 - 0 + 1), random.nextInt(19 - 0 + 1)));
 
 
