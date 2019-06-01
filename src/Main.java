@@ -30,7 +30,7 @@ public class Main {
         int speed = 100;
         int scale = 20;
 
-        Color headColor = Color.black;
+        Color headColor = Color.BLACK;
         Color bodyColor = Color.BLUE;
 
         for(int i = 0; i < args.length; i++) {
