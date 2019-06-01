@@ -22,8 +22,8 @@ public class Snake {
     private int green = 0;
     private int blue = 255;
 
-    private String eatSound = "extremely-simple-snake-with-bugs-or-as-i-call-it-opportunities/ploink.wav";
-    private String gameOver = "extremely-simple-snake-with-bugs-or-as-i-call-it-opportunities/gameover.wav";
+    private String eatSound = "../audiofiles/ploink.wav";
+    private String gameOver = "../audiofiles/gameover.wav";
 
     PlaySound playSound = new PlaySound();
     Random random = new Random();
