@@ -19,14 +19,20 @@ public class Main {
     public static boolean nowalls;
     public static boolean pride;
     public static boolean picasso;
+    public static boolean retro;
 
     public static void main(String[] args) {
 
         nowalls = false;
         pride = false;
         picasso = false;
+        retro = false;
+        int speed = 100;
         int scale = 20;
         int mapsize = 20;
+
+        Color headColor = Color.BLACK;
+        Color bodyColor = Color.BLUE;
 
         for(int i = 0; i < args.length; i++) {
             if (args.length > 0) {
@@ -46,8 +52,14 @@ public class Main {
                     picasso = true;
                     pride = true;
                 }
+                if(args[i].equals("--retro")){
+                    retro = true;
+                    speed = Integer.parseInt(args[i + 1]);
+                    headColor = new Color(10,40,20);
+                    bodyColor = new Color(10,80,40);
+                }
+              
                 if(args[i].equals("--help") || args[i].equals("-h")){
-
                     System.out.println("\n" +
                             "The following parameters are available:\n" +
                             "\n" +
@@ -67,16 +79,19 @@ public class Main {
             }
         }
         /* unit test */
-        Head head = new Head(new Point(6, 4), Color.BLACK);
+        Head head = new Head(new Point(6, 4), headColor);
 
-        Snake snake = new Snake(head, nowalls, pride, mapsize);
-        Body body = new Body(new Point(5, 4), Color.BLUE);
+
+        Snake snake = new Snake(head, nowalls, pride, mapsize, retro);
+        Body body = new Body(new Point(5, 4), bodyColor);
 
         snake.append(body);
 
         /* screen */
         JFrame frame = new JFrame();
-        Game game = new Game(snake, scale, mapsize, picasso);
+
+        Game game = new Game(snake, scale, mapsize, picasso, retro);
+
         frame.add(game);
         frame.addKeyListener(game);
         frame.pack();
@@ -91,7 +106,7 @@ public class Main {
                 snake.move();
             }
         };
-        timer.schedule(task, 100, 100);
+        timer.schedule(task, speed, speed);
 
         task2 = new TimerTask() {
 

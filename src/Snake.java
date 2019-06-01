@@ -17,6 +17,7 @@ public class Snake {
     private boolean nowalls;
     private boolean pride;
     private int mapsize;
+    private boolean retro;
     private int red = 0;
     private int green = 0;
     private int blue = 255;
@@ -24,11 +25,13 @@ public class Snake {
     Random random = new Random();
 
     /* constructor */
-    public Snake(Head head, boolean nowalls, boolean pride, int mapsize) {
+
+    public Snake(Head head, boolean nowalls, boolean pride, int mapsize, boolean retro) {
         this.head = head;
         this.nowalls = nowalls;
         this.pride = pride;
         this.mapsize = mapsize;
+        this.retro = retro;
     }
 
     /* functions */
@@ -118,7 +121,11 @@ public class Snake {
                 blue = random.nextInt(255 - 0 + 1);
                 food.setColor(new Color(red, green,blue, 255));
             } else {
-                append(new Body(lp, Color.BLUE));
+                if(!retro) {
+                    append(new Body(lp, Color.BLUE));
+                } else {
+                    append(new Body(lp, new Color(10,80,40)));
+                }
             }
             food.setLoc(new Point(random.nextInt(mapsize), random.nextInt(mapsize)));
 
