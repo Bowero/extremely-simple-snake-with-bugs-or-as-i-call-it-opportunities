@@ -14,28 +14,22 @@ public class Game extends JPanel implements KeyListener {
     private static final long serialVersionUID = 3502635132646172422L;
 
     /* fields */
-    public final static int DEFAULT_SCALE = 20;
-    public final static boolean DEFAULT_PICASSO = false;
-    public final static boolean DEFAULT_RETRO = false;
-
     private int scale;
+    private int mapsize;
     private Snake snake;
     private boolean picasso;
     private boolean retro;
 
-    /* constructor */
-    public Game(Snake snake) {
-        this(snake, Game.DEFAULT_SCALE, Game.DEFAULT_PICASSO, DEFAULT_RETRO);
-    }
 
-    public Game(Snake snake, int scale, boolean picasso, boolean retro) {
+    public Game(Snake snake, int scale, int mapsize, boolean picasso, boolean retro) {
         this.scale = scale;
         this.snake = snake;
         this.picasso = picasso;
+        this.mapsize = mapsize;
         this.retro = retro;
 
         addKeyListener(this);
-        setPreferredSize(new Dimension(20 * scale, 20 * scale));
+        setPreferredSize(new Dimension(mapsize * scale, mapsize * scale));
         setFocusable(true);
     }
 
@@ -44,11 +38,12 @@ public class Game extends JPanel implements KeyListener {
 
         /* draws a white square over the screen to clear it */
         if(!picasso) {
-            g.clearRect(0, 0, 20 * scale, 20 * scale);
+
+            g.clearRect(0, 0, mapsize * scale, mapsize * scale);
 
             if(retro){
                 g.setColor(new Color(0,170,0));
-                g.fillRect(0,0,20 * scale, 20 * scale);
+                g.fillRect(0,0,mapsize * scale, mapsize * scale);
             }
         }
 

@@ -16,6 +16,7 @@ public class Snake {
 
     private boolean nowalls;
     private boolean pride;
+    private int mapsize;
     private boolean retro;
     private int red = 0;
     private int green = 0;
@@ -24,10 +25,12 @@ public class Snake {
     Random random = new Random();
 
     /* constructor */
-    public Snake(Head head, boolean nowalls, boolean pride, boolean retro) {
+
+    public Snake(Head head, boolean nowalls, boolean pride, int mapsize, boolean retro) {
         this.head = head;
         this.nowalls = nowalls;
         this.pride = pride;
+        this.mapsize = mapsize;
         this.retro = retro;
     }
 
@@ -93,16 +96,16 @@ public class Snake {
 
         if (nowalls) {
             if (headX < 0) {
-                head.setLoc(new Point(headX+20, headY));
-            } else if (headX > 19) {
-                head.setLoc(new Point(headX-20, headY));
+                head.setLoc(new Point(headX+mapsize, headY));
+            } else if (headX > mapsize - 1) {
+                head.setLoc(new Point(headX-mapsize, headY));
             } else if (headY < 0) {
-                head.setLoc(new Point(headX, headY+20));
-            } else if (headY > 19) {
-                head.setLoc(new Point(headX, headY-20));
+                head.setLoc(new Point(headX, headY+mapsize));
+            } else if (headY > mapsize -1) {
+                head.setLoc(new Point(headX, headY-mapsize));
             }
         } else {
-            if (head.getLoc().x < 0 || head.getLoc().x > 19 || head.getLoc().y < 0 || head.getLoc().y > 19) {
+            if (head.getLoc().x < 0 || head.getLoc().x > mapsize - 1 || head.getLoc().y < 0 || head.getLoc().y > mapsize - 1) {
                 System.exit(0);
             }
         }
@@ -124,13 +127,13 @@ public class Snake {
                     append(new Body(lp, new Color(10,80,40)));
                 }
             }
-            food.setLoc(new Point(random.nextInt(19 - 0 + 1), random.nextInt(19 - 0 + 1)));
+            food.setLoc(new Point(random.nextInt(mapsize), random.nextInt(mapsize)));
 
 
             /* Makes sure the food does not spawn on top of the snake*/
             while(last.getNext() != null){
                 if(last.getLoc().x == food.getLoc().x && last.getLoc().y == food.getLoc().y){
-                    food.setLoc(new Point(random.nextInt(19 - 0 + 1), random.nextInt(19 - 0 + 1)));
+                    food.setLoc(new Point(random.nextInt(mapsize), random.nextInt(mapsize)));
                 }
 
 

@@ -29,22 +29,26 @@ public class Main {
         retro = false;
         int speed = 100;
         int scale = 20;
+        int mapsize = 20;
 
         Color headColor = Color.BLACK;
         Color bodyColor = Color.BLUE;
 
         for(int i = 0; i < args.length; i++) {
             if (args.length > 0) {
-                if (args[i].equals("--no-walls")) {
+                if (args[i].equals("--no-walls") || args[i].equals("-n")) {
                     nowalls = true;
                 }
-                if (args[i].equals("--pride")) {
+                if (args[i].equals("--pride") || args[i].equals("-p")) {
                     pride = true;
                 }
-                if (args[i].equals("--scale")) {
+                if (args[i].equals("--scale") || args[i].equals("-s")) {
                     scale = Integer.parseInt(args[i + 1]);
                 }
-                if(args[i].equals("--picasso")){
+                if (args[i].equals("--mapsize") || args[i].equals("-m")) {
+                    mapsize = Integer.parseInt(args[i + 1]);
+                }
+                if(args[i].equals("--picasso") || args[i].equals("-pi")){
                     picasso = true;
                     pride = true;
                 }
@@ -54,17 +58,19 @@ public class Main {
                     headColor = new Color(10,40,20);
                     bodyColor = new Color(10,80,40);
                 }
-
-                if(args[i].equals("--help")){
-
+              
+                if(args[i].equals("--help") || args[i].equals("-h")){
                     System.out.println("\n" +
                             "The following parameters are available:\n" +
                             "\n" +
-                            "--no-walls             this disables all walls\n" +
-                            "--pride                this turns the snake into a rainbow snake\n" +
-                            "--picasso              this turns the snake into a Snakasso\n" +
-                            "--scale NUM            this allows you to scale the game\n" +
+                            "--no-walls     / -n    this disables all walls\n" +
+                            "--pride        / -p    this turns the snake into a rainbow snake\n" +
+                            "--picasso      / -pi   this turns the snake into a Snakasso\n" +
+                            "--mapsize      / -m    this allows you to create a map of your own size\n" +
                             "                       default: 20\n" +
+                            "--scale NUM    / -s    this allows you to scale the game\n" +
+                            "                       default: 20\n" +
+                            "--help         / -h    display this help" +
                             "\n" +
                             "");
 
@@ -75,14 +81,17 @@ public class Main {
         /* unit test */
         Head head = new Head(new Point(6, 4), headColor);
 
-        Snake snake = new Snake(head, nowalls, pride, retro);
+
+        Snake snake = new Snake(head, nowalls, pride, mapsize, retro);
         Body body = new Body(new Point(5, 4), bodyColor);
 
         snake.append(body);
 
         /* screen */
         JFrame frame = new JFrame();
-        Game game = new Game(snake, scale, picasso, retro);
+
+        Game game = new Game(snake, scale, mapsize, picasso, retro);
+
         frame.add(game);
         frame.addKeyListener(game);
         frame.pack();
