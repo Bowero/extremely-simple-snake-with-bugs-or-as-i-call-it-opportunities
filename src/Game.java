@@ -47,9 +47,12 @@ public class Game extends JPanel implements KeyListener {
             }
         }
 
+        if(!retro){
+            g.clearRect(0, 0, 20 * scale, 1 * scale);
+
+        }
 
 
-        g.clearRect(0, 0, 20 * scale, 1 * scale);
 
         /* store last block */
         Body last = snake.getHead();
