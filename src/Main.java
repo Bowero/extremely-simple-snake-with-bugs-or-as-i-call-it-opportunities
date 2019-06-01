@@ -54,6 +54,7 @@ public class Main {
         frame.addKeyListener(game);
         frame.pack();
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         task = new TimerTask() {
 
