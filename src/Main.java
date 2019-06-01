@@ -90,7 +90,7 @@ public class Main {
                             "                       default: 20\n" +
                             "--retro NUM    / -r    this allows you to play the nokia version of snake\n" +
                             "                       the number is the speed. recommended: 300" +
-                            "--help         / -h    display this help" +
+                            "--help         / -h    display this help\n" +
                             "\n" +
                             "");
 
