@@ -43,16 +43,34 @@ public class Main {
                     pride = true;
                 }
                 if (args[i].equals("--scale") || args[i].equals("-s")) {
+                    try {
+                        Integer.parseInt(args[i+1]);
+                    } catch (Exception e) {
+                        System.out.println("--scale requires a number. See --help.");
+                        System.exit(0);
+                    }
                     scale = Integer.parseInt(args[i + 1]);
                 }
                 if (args[i].equals("--mapsize") || args[i].equals("-m")) {
+                    try {
+                        Integer.parseInt(args[i+1]);
+                    } catch (Exception e) {
+                        System.out.println("--mapsize requires a number. See --help.");
+                        System.exit(0);
+                    }
                     mapsize = Integer.parseInt(args[i + 1]);
                 }
                 if(args[i].equals("--picasso") || args[i].equals("-pi")){
                     picasso = true;
                     pride = true;
                 }
-                if(args[i].equals("--retro")){
+                if(args[i].equals("--retro") || args[i].equals("-r")){
+                    try {
+                        Integer.parseInt(args[i+1]);
+                    } catch (Exception e) {
+                        System.out.println("--retro requires a number. See --help.");
+                        System.exit(0);
+                    }
                     retro = true;
                     speed = Integer.parseInt(args[i + 1]);
                     headColor = new Color(10,40,20);
@@ -70,6 +88,8 @@ public class Main {
                             "                       default: 20\n" +
                             "--scale NUM    / -s    this allows you to scale the game\n" +
                             "                       default: 20\n" +
+                            "--retro NUM    / -r    this allows you to play the nokia version of snake\n" +
+                            "                       the number is the speed. recommended: 300" +
                             "--help         / -h    display this help" +
                             "\n" +
                             "");
