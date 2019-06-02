@@ -3,6 +3,7 @@ package src;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 /**
  * complete snek with head and booty
@@ -95,7 +96,8 @@ public class Snake {
         Body checkifyouaredeadotherwisewewillgetyoudead = head.getNext();
         while (checkifyouaredeadotherwisewewillgetyoudead.getNext() != null) {
             if (head.isCollision(checkifyouaredeadotherwisewewillgetyoudead)) {
-                playSound.playSound(gameOver);
+                playSound.play(gameOver);
+                sleep(3000);
                 System.exit(0);
             }
             checkifyouaredeadotherwisewewillgetyoudead = checkifyouaredeadotherwisewewillgetyoudead.getNext();
@@ -114,7 +116,8 @@ public class Snake {
         } else {
             if (head.getLoc().x < 0 || head.getLoc().x > mapsize - 1 || head.getLoc().y < 0
                     || head.getLoc().y > mapsize - 1) {
-                playSound.playSound(gameOver);
+                playSound.play(gameOver);
+                sleep(3000);
                 System.exit(0);
             }
         }
@@ -122,12 +125,7 @@ public class Snake {
         /* checks if the snake collides with the food */
         if (head.isCollision(food)) {
 
-            /* Using lambda, this allows it to be rerun, instead of creating new objects  */
-            new Thread(new Runnable() {
-                public void run() {
-                    new PlaySound().playSound(eatSound);
-                }
-            }).start();
+            new PlaySound().play(eatSound);
 
             if (pride) {
                 append(new Body(lp, food.getColor()));
@@ -206,5 +204,13 @@ public class Snake {
 
         /* return the length of the snake */
         return length - 2;
+    }
+
+    private void sleep(int timer) {
+        try {
+            TimeUnit.MILLISECONDS.sleep(timer);
+        } catch (Exception e) {
+            System.out.println("Sleep failed. Exception: " + e);
+        }
     }
 }
