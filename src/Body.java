@@ -4,18 +4,19 @@ import java.awt.Color;
 import java.awt.Point;
 
 /**
- * food is nom
+ * The body is a part of the snake. The head is also a body part
  */
 public class Body extends Block {
 
-    /* fields */
+    /* Fields */
     private Point loc;
     private Color color;
 
+    /* The body is part of a linked list */
     private Body prev;
     private Body next;
 
-    /* constructor */
+    /* Constructor */
     public Body(Point loc, Color color) {
         super(loc, color);
 
@@ -23,7 +24,7 @@ public class Body extends Block {
         this.color = color;
     }
 
-    /* getters and setters */
+    /* Getters and setters */
     public void setNext(Body next) {
         this.next = next;
     }
@@ -40,31 +41,27 @@ public class Body extends Block {
         return prev;
     }
 
-    /* overrides of abstract class */
-    @Override
-    void setLoc(Point loc) {
+    /* Overrides of abstract class */
+    public void setLoc(Point loc) {
         this.loc = loc;
     }
 
-    @Override
-    void setColor(Color color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
-    @Override
-    Point getLoc() {
+    public Point getLoc() {
         return loc;
     }
 
-    @Override
-    Color getColor() {
+    public Color getColor() {
         return color;
     }
 
-    /* check if o collides */
+    /* Check if object collides */
     public boolean isCollision(Block o) {
 
-        /* following is true when o and head collide */
+        /* Following is true when object and head collide */
         return (getLoc().x == o.getLoc().x && getLoc().y == o.getLoc().y);
 
     }

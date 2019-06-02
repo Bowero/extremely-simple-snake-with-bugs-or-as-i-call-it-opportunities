@@ -1,16 +1,18 @@
 package src;
+
 import java.awt.Color;
 import java.awt.Point;
 
 /**
- * food is nom
+ * There is always 1 food element in the game
  */
 public class Food extends Block {
 
-    /* fields */
+    /* Fields */
     private Point loc;
     private Color color;
 
+    /* Constructor */
     public Food(Point loc, Color color) {
         super(loc, color);
 
@@ -18,24 +20,20 @@ public class Food extends Block {
         this.color = color;
     }
 
-    /* getters and setters */
-    @Override
-    void setLoc(Point loc) {
+    /* Getters and setters */
+    public void setLoc(Point loc) {
         this.loc = loc;
     }
 
-    @Override
-    void setColor(Color color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
-    @Override
-    Point getLoc() {
+    public Point getLoc() {
         return loc;
     }
 
-    @Override
-    Color getColor() {
+    public Color getColor() {
         return color;
     }
 

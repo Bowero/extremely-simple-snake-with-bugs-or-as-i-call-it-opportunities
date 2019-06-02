@@ -1,19 +1,21 @@
 package src;
+
 import java.awt.Color;
 import java.awt.Point;
 
 /**
- * food is nom
+ * The head is part of the body
  */
 public class Head extends Body {
 
-    /* fields */
+    /* Fields */
     private Point loc;
     private Color color;
 
+    /* The head does not have a previous */
     private Body next;
 
-    /* constructor */
+    /* Constructor */
     public Head(Point loc, Color color) {
         super(loc, color);
 
@@ -21,7 +23,7 @@ public class Head extends Body {
         this.color = color;
     }
 
-    /* getters and setters */
+    /* Getters and setters */
     public void setNext(Body next) {
         this.next = next;
     }
@@ -30,24 +32,20 @@ public class Head extends Body {
         return next;
     }
 
-    /* overrides of abstract class */
-    @Override
-    void setLoc(Point loc) {
+    /* Overrides of abstract class Block */
+    public void setLoc(Point loc) {
         this.loc = loc;
     }
 
-    @Override
-    void setColor(Color color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
-    @Override
-    Point getLoc() {
+    public Point getLoc() {
         return loc;
     }
 
-    @Override
-    Color getColor() {
+    public Color getColor() {
         return color;
     }
 
