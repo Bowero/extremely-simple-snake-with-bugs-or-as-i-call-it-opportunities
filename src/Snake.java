@@ -92,7 +92,7 @@ public class Snake {
             this.dir = Directions.WEST;
             break;
         }
-      
+
         Body collisionBody = head;
         while (collisionBody.getNext() != null) {
             collisionBody = collisionBody.getNext();
@@ -102,22 +102,23 @@ public class Snake {
                 System.exit(0);
             }
 
-        if (nowalls) {
-            if (headX < 0) {
-                head.setLoc(new Point(headX + mapsize, headY));
-            } else if (headX > mapsize - 1) {
-                head.setLoc(new Point(headX - mapsize, headY));
-            } else if (headY < 0) {
-                head.setLoc(new Point(headX, headY + mapsize));
-            } else if (headY > mapsize - 1) {
-                head.setLoc(new Point(headX, headY - mapsize));
-            }
-        } else {
-            if (head.getLoc().x < 0 || head.getLoc().x > mapsize - 1 || head.getLoc().y < 0
-                    || head.getLoc().y > mapsize - 1) {
-                playSound.play(gameOver);
-                sleep(3000);
-                System.exit(0);
+            if (nowalls) {
+                if (headX < 0) {
+                    head.setLoc(new Point(headX + mapsize, headY));
+                } else if (headX > mapsize - 1) {
+                    head.setLoc(new Point(headX - mapsize, headY));
+                } else if (headY < 0) {
+                    head.setLoc(new Point(headX, headY + mapsize));
+                } else if (headY > mapsize - 1) {
+                    head.setLoc(new Point(headX, headY - mapsize));
+                }
+            } else {
+                if (head.getLoc().x < 0 || head.getLoc().x > mapsize - 1 || head.getLoc().y < 0
+                        || head.getLoc().y > mapsize - 1) {
+                    playSound.play(gameOver);
+                    sleep(3000);
+                    System.exit(0);
+                }
             }
         }
 
