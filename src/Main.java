@@ -1,7 +1,6 @@
 package src;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Timer;
 import java.util.TimerTask;
