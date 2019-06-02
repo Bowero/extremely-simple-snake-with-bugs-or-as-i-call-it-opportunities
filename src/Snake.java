@@ -12,7 +12,8 @@ public class Snake {
 
     /* fields */
     private Head head;
-    private Directions dir = Directions.EAST;
+    private Directions prefDir = Directions.EAST;
+    private Directions realDir = Directions.EAST;
 
     public Food food = new Food(new Point(1, 3), Color.GREEN);
 
@@ -48,7 +49,7 @@ public class Snake {
     }
 
     public void move() {
-        this.move(dir);
+        this.move(prefDir);
     }
 
     public void move(Directions dir) {
@@ -71,25 +72,25 @@ public class Snake {
         case NORTH:
             headY -= 1;
             head.setLoc(new Point(headX, headY));
-            this.dir = Directions.NORTH;
+            this.realDir = Directions.NORTH;
             break;
 
         case EAST:
             headX += 1;
             head.setLoc(new Point(headX, headY));
-            this.dir = Directions.EAST;
+            this.realDir = Directions.EAST;
             break;
 
         case SOUTH:
             headY += 1;
             head.setLoc(new Point(headX, headY));
-            this.dir = Directions.SOUTH;
+            this.realDir = Directions.SOUTH;
             break;
 
         case WEST:
             headX -= 1;
             head.setLoc(new Point(headX, headY));
-            this.dir = Directions.WEST;
+            this.realDir = Directions.WEST;
             break;
         }
 
@@ -156,20 +157,20 @@ public class Snake {
     public void setDirection(Directions dir) {
         switch (dir) {
         case NORTH:
-            if (this.dir != Directions.SOUTH)
-                this.dir = dir;
+            if (this.realDir != Directions.SOUTH)
+                this.prefDir = dir;
             break;
         case EAST:
-            if (this.dir != Directions.WEST)
-                this.dir = dir;
+            if (this.realDir != Directions.WEST)
+                this.prefDir = dir;
             break;
         case SOUTH:
-            if (this.dir != Directions.NORTH)
-                this.dir = dir;
+            if (this.realDir != Directions.NORTH)
+                this.prefDir = dir;
             break;
         case WEST:
-            if (this.dir != Directions.EAST)
-                this.dir = dir;
+            if (this.realDir != Directions.EAST)
+                this.prefDir = dir;
             break;
         }
     }
