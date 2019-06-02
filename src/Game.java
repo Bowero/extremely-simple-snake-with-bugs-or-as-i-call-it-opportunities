@@ -27,6 +27,8 @@ public class Game extends JPanel implements KeyListener {
         this.picasso = picasso;
         this.mapsize = mapsize;
         this.retro = retro;
+
+        setPreferredSize(new Dimension(mapsize * scale, mapsize * scale));
     }
 
     public void paintComponent(Graphics g) {
@@ -59,7 +61,7 @@ public class Game extends JPanel implements KeyListener {
 
         /* Loop through the snake */
         while (last.getNext() != null) {
-            
+
             /* Get the color of the selected body part */
             g.setColor(last.getColor());
 

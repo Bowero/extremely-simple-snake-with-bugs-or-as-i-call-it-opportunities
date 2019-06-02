@@ -123,7 +123,6 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.addKeyListener(game);
-        frame.setPreferredSize(new Dimension(mapsize * scale, mapsize * scale));
         frame.setFocusable(true);
 
         /* Set up timers to redraw the game and logic */
