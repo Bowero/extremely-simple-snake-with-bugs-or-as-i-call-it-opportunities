@@ -97,7 +97,7 @@ public class Snake {
         while (collisionBody.getNext() != null) {
             collisionBody = collisionBody.getNext();
             if (head.isCollision(collisionBody)) {
-                playSound.playSound(gameOver);
+                playSound.play(gameOver);
                 sleep(3000);
                 System.exit(0);
             }
