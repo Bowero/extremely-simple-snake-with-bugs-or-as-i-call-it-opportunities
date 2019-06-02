@@ -87,11 +87,13 @@ public class Snake {
             break;
         }
 
-        Body checkifyouaredeadotherwisewewillgetyoudead = head.getNext();
-        while (checkifyouaredeadotherwisewewillgetyoudead.getNext() != null) {
-            if (head.isCollision(checkifyouaredeadotherwisewewillgetyoudead))
+        Body collisionBody = head;
+        while (collisionBody.getNext() != null) {
+            collisionBody = collisionBody.getNext();
+            if (head.isCollision(collisionBody)) {
+                playSound.playSound(gameOver);
                 System.exit(0);
-            checkifyouaredeadotherwisewewillgetyoudead = checkifyouaredeadotherwisewewillgetyoudead.getNext();
+            }
         }
 
         if (nowalls) {
