@@ -1,4 +1,5 @@
 package src;
+
 import java.awt.Color;
 import java.awt.Point;
 import java.util.Random;
@@ -73,20 +74,20 @@ public class Snake {
             break;
 
         case EAST:
-        headX += 1;
-        head.setLoc(new Point(headX, headY));
+            headX += 1;
+            head.setLoc(new Point(headX, headY));
             this.dir = Directions.EAST;
             break;
 
         case SOUTH:
-        headY += 1;
-        head.setLoc(new Point(headX, headY));
+            headY += 1;
+            head.setLoc(new Point(headX, headY));
             this.dir = Directions.SOUTH;
             break;
 
         case WEST:
-        headX -= 1;
-        head.setLoc(new Point(headX, headY));
+            headX -= 1;
+            head.setLoc(new Point(headX, headY));
             this.dir = Directions.WEST;
             break;
         }
@@ -102,49 +103,51 @@ public class Snake {
 
         if (nowalls) {
             if (headX < 0) {
-                head.setLoc(new Point(headX+mapsize, headY));
+                head.setLoc(new Point(headX + mapsize, headY));
             } else if (headX > mapsize - 1) {
-                head.setLoc(new Point(headX-mapsize, headY));
+                head.setLoc(new Point(headX - mapsize, headY));
             } else if (headY < 0) {
-                head.setLoc(new Point(headX, headY+mapsize));
-            } else if (headY > mapsize -1) {
-                head.setLoc(new Point(headX, headY-mapsize));
+                head.setLoc(new Point(headX, headY + mapsize));
+            } else if (headY > mapsize - 1) {
+                head.setLoc(new Point(headX, headY - mapsize));
             }
         } else {
-            if (head.getLoc().x < 0 || head.getLoc().x > mapsize - 1 || head.getLoc().y < 0 || head.getLoc().y > mapsize - 1) {
+            if (head.getLoc().x < 0 || head.getLoc().x > mapsize - 1 || head.getLoc().y < 0
+                    || head.getLoc().y > mapsize - 1) {
                 playSound.playSound(gameOver);
                 System.exit(0);
             }
         }
 
-
         /* checks if the snake collides with the food */
         if (head.isCollision(food)) {
 
-            new PlaySound().playSound(eatSound);
+            new Thread(new Runnable() {
+                public void run() {
+                    new PlaySound().playSound(eatSound);
+                }
+            }).start();
 
-            if(pride) {
+            if (pride) {
                 append(new Body(lp, food.getColor()));
                 red = random.nextInt(255 - 0 + 1);
                 green = random.nextInt(255 - 0 + 1);
                 blue = random.nextInt(255 - 0 + 1);
-                food.setColor(new Color(red, green,blue, 255));
+                food.setColor(new Color(red, green, blue, 255));
             } else {
-                if(!retro) {
+                if (!retro) {
                     append(new Body(lp, Color.BLUE));
                 } else {
-                    append(new Body(lp, new Color(10,80,40)));
+                    append(new Body(lp, new Color(10, 80, 40)));
                 }
             }
             food.setLoc(new Point(random.nextInt(mapsize), random.nextInt(mapsize)));
 
-
-            /* Makes sure the food does not spawn on top of the snake*/
-            while(last.getNext() != null){
-                if(last.getLoc().x == food.getLoc().x && last.getLoc().y == food.getLoc().y){
+            /* Makes sure the food does not spawn on top of the snake */
+            while (last.getNext() != null) {
+                if (last.getLoc().x == food.getLoc().x && last.getLoc().y == food.getLoc().y) {
                     food.setLoc(new Point(random.nextInt(mapsize), random.nextInt(mapsize)));
                 }
-
 
                 last = last.getNext();
             }
@@ -171,7 +174,6 @@ public class Snake {
             break;
         }
     }
-
 
     /* find the last block of the snake */
     public Body findLastBlock() {
