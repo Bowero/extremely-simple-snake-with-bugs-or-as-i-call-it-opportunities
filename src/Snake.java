@@ -93,32 +93,32 @@ public class Snake {
             break;
         }
 
-        Body checkifyouaredeadotherwisewewillgetyoudead = head.getNext();
-        while (checkifyouaredeadotherwisewewillgetyoudead.getNext() != null) {
-            if (head.isCollision(checkifyouaredeadotherwisewewillgetyoudead)) {
+        Body collisionBody = head;
+        while (collisionBody.getNext() != null) {
+            collisionBody = collisionBody.getNext();
+            if (head.isCollision(collisionBody)) {
                 playSound.play(gameOver);
                 sleep(3000);
                 System.exit(0);
             }
-            checkifyouaredeadotherwisewewillgetyoudead = checkifyouaredeadotherwisewewillgetyoudead.getNext();
-        }
 
-        if (nowalls) {
-            if (headX < 0) {
-                head.setLoc(new Point(headX + mapsize, headY));
-            } else if (headX > mapsize - 1) {
-                head.setLoc(new Point(headX - mapsize, headY));
-            } else if (headY < 0) {
-                head.setLoc(new Point(headX, headY + mapsize));
-            } else if (headY > mapsize - 1) {
-                head.setLoc(new Point(headX, headY - mapsize));
-            }
-        } else {
-            if (head.getLoc().x < 0 || head.getLoc().x > mapsize - 1 || head.getLoc().y < 0
-                    || head.getLoc().y > mapsize - 1) {
-                playSound.play(gameOver);
-                sleep(3000);
-                System.exit(0);
+            if (nowalls) {
+                if (headX < 0) {
+                    head.setLoc(new Point(headX + mapsize, headY));
+                } else if (headX > mapsize - 1) {
+                    head.setLoc(new Point(headX - mapsize, headY));
+                } else if (headY < 0) {
+                    head.setLoc(new Point(headX, headY + mapsize));
+                } else if (headY > mapsize - 1) {
+                    head.setLoc(new Point(headX, headY - mapsize));
+                }
+            } else {
+                if (head.getLoc().x < 0 || head.getLoc().x > mapsize - 1 || head.getLoc().y < 0
+                        || head.getLoc().y > mapsize - 1) {
+                    playSound.play(gameOver);
+                    sleep(3000);
+                    System.exit(0);
+                }
             }
         }
 
