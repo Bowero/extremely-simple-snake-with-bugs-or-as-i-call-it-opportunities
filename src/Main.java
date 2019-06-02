@@ -89,7 +89,7 @@ public class Main {
                             "--scale NUM    / -s    this allows you to scale the game\n" +
                             "                       default: 20\n" +
                             "--retro NUM    / -r    this allows you to play the nokia version of snake\n" +
-                            "                       the number is the speed. recommended: 300" +
+                            "                       the number is the speed. recommended: 300\n" +
                             "--help         / -h    display this help\n" +
                             "\n" +
                             "");
