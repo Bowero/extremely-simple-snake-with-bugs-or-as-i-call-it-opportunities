@@ -158,7 +158,7 @@ public class Snake {
         if (head.isCollision(food)) {
 
             /* Play a sound to give extra feedback */
-            new PlaySound().play(eatSound);
+            new Thread(() -> new PlaySound().play(eatSound)).start();
 
             /* If the user wants to play the colorful snake */
             if (pride) {
