@@ -122,6 +122,7 @@ public class Snake {
         /* checks if the snake collides with the food */
         if (head.isCollision(food)) {
 
+            /* Using lambda, this allows it to be rerun, instead of creating new objects  */
             new Thread(new Runnable() {
                 public void run() {
                     new PlaySound().playSound(eatSound);
