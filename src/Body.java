@@ -66,4 +66,9 @@ public class Body extends Block {
 
     }
 
+    public int count() {
+        if (getNext() != null) return getNext().count() + 1;
+        return 1;
+    }
+
 }

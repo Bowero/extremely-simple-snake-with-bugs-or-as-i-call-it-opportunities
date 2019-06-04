@@ -157,7 +157,10 @@ public class Snake {
         /* Checks if the snake collides with the food */
         if (head.isCollision(food)) {
 
-            /* Play a sound to give extra feedback, using lambda, this allows it to be rerun, instead of creating new objects  */
+            /*
+             * Play a sound to give extra feedback, using lambda, this allows it to be
+             * rerun, instead of creating new objects
+             */
             new Thread(() -> new PlaySound().play(eatSound)).start();
 
             /* If the user wants to play the colorful snake */
@@ -172,7 +175,12 @@ public class Snake {
                 blue = random.nextInt(255 - 0 + 1);
 
                 /* Give the food a new color, randomized */
-                food.setColor(new Color(red, green, blue, 255));
+                if (!retro) {
+                    food.setColor(new Color(red, green, blue, 255));
+                } else {
+                    food.setColor(new Color(red, green, blue, 150));
+                }
+
             }
             /* If the user wants to play with a normal snake */
             else {
@@ -254,21 +262,7 @@ public class Snake {
 
     /* Return the length by calculating */
     public int getLength() {
-
-        /* Keep track of the length in a temporary integer */
-        int length = 1;
-
-        /* Loop through the snake */
-        Body last = head;
-        while (last.getNext() != null) {
-            last = last.getNext();
-
-            /* Add a point for every block */
-            length++;
-        }
-
-        /* Return the length of the snake */
-        return length - 2;
+        return head.count();
     }
 
     /* Halt the game (useful for gameOver()) */
