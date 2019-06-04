@@ -157,7 +157,7 @@ public class Snake {
         /* Checks if the snake collides with the food */
         if (head.isCollision(food)) {
 
-            /* Play a sound to give extra feedback */
+            /* Play a sound to give extra feedback, using lambda, this allows it to be rerun, instead of creating new objects  */
             new Thread(() -> new PlaySound().play(eatSound)).start();
 
             /* If the user wants to play the colorful snake */
